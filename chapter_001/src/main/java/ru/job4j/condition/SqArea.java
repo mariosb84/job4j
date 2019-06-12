@@ -8,11 +8,11 @@ public class SqArea {
      * @param  p- perimetr,  k - koefficient.
      * @return Ploshad.
      */
-    public int square(int p, int k){
-        int w  ;
-        int h ;
+    public int square(int p, int k) {
+        int w;
+        int h;
         int s;
-        h = p / ((2 * k)+ 2);
+        h = p / ((2 * k) + 2);
         w = h * k;
         s = w * h;
         return s;
