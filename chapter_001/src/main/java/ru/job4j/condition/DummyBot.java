@@ -5,18 +5,18 @@ package ru.job4j.condition;
  */
 public class DummyBot {
     /**
-     * Отвечает на вопросы.
-     * @param question Вопрос от клиента.
-     * @return Ответ.
+     *Answers the questions.
+     * @param question Question from the client.
+     * @return Answer.
      */
     public String answer(String question) {
-        String rsl = "Это ставит меня в тупик. Задайте другой вопрос.";
-        if ("Привет, Бот.".equals(question)) {
-            // заменить ... на правильный ответ rsl = "ответ по заданию".
-            rsl = "Привет, умник.";
-        } else if ("Пока.".equals(question)) { // заменить ... на проверку, известен ли боту этот вопрос и он знает как на него ответить.
-            // заменить ... на правильный ответ rsl = "ответ по заданию".
-            rsl = "До скорой встречи.";
+        String rsl = "It baffles me. Ask another question.";
+        if ("Hello, bot.".equals(question)) {
+            // replace ... with the correct answer rsl = "answer by task".
+            rsl = "Hello, wise guy.";
+        } else if ("Bye.".equals(question)) { // replace ... with a check if the bot is aware of this question and he knows how to answer it.
+            // replace ... with the correct answer rsl = "answer by task".
+            rsl = "See you soon.";
         }
         return rsl;
     }
