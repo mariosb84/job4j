@@ -4,7 +4,7 @@ package ru.job4j.condition;
  */
 public class Max {
     /**
-     *Ñalculates a larger value.
+     *Calculates a larger value.
      * @param first value,second value.
      * @return result.
      */
