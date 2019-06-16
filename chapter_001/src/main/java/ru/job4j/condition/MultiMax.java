@@ -9,8 +9,8 @@ public class MultiMax {
      * @return maximum result.
      */
     public int max(int first, int second, int third) {
-        int resultFirstMoreSecond = first > second ? first : second;
-        int resultThirdMoreFirstSecond = third > resultFirstMoreSecond ? third : resultFirstMoreSecond;
-        return resultThirdMoreFirstSecond;
+        int result1 = first > second ? first : second;
+        int result2 = third > result1 ? third : result1;
+        return result2;
     }
 }
