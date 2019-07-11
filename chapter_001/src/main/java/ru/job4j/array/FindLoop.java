@@ -9,7 +9,7 @@ public class FindLoop {
      * @return index of the element in the array.
      */
     public int indexOf(int[] data, int el) {
-        int rst = -1; // если элемента нет в массиве, то возвращаем -1.
+        int rst = -1; // if the element is not in the array, then return -1.
         for (int index = 0; index < data.length; index++) {
             if (data[index] == el) {
                 rst = index;
