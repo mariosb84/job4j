@@ -3,12 +3,22 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
+<<<<<<< HEAD
         <groupId>ru.job4j</groupId>
         <artifactId>junior</artifactId>
         <version>2.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>puzzle</artifactId>
+=======
+     <groupId>ru.job4j</groupId>
+    <artifactId>junior</artifactId>
+    <version>2.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>puzzle</artifactId>
+ 
+>>>>>>> da4f4be5df2531c16382613648e0c133024e5e59
 
 
 </project>

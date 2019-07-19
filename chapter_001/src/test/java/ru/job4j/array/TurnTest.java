@@ -1,7 +1,12 @@
 package ru.job4j.array;
 import org.junit.Test;
+<<<<<<< HEAD
 //import static org.hamcrest.Matchers.is;
 import static org.hamcrest.core.Is.is;
+=======
+import static org.hamcrest.Matchers.is;                                           
+//import static org.hamcrest.core.Is.is;
+>>>>>>> da4f4be5df2531c16382613648e0c133024e5e59
 import static org.junit.Assert.assertThat;
 /**
  * Test.
