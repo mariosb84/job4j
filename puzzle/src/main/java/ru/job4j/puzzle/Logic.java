@@ -37,21 +37,12 @@ public class Logic {
         return rst;
     }
 
-<<<<<<< HEAD
     public boolean isFree(Cell... cells) {
         boolean result = cells.length > 0;
         for (Cell cell : cells) {
             if (this.findBy(cell) != -1) {
                 result = false;
                 break;
-=======
-    public boolean isFree(Cell ... cells) {
-        boolean result = cells.length > 0;
-        for (Cell cell : cells) {
-            if (this.findBy(cell) != -1) {
-               result = false;
-               break;
->>>>>>> da4f4be5df2531c16382613648e0c133024e5e59
             }
         }
         return result;
@@ -78,45 +69,20 @@ public class Logic {
     public boolean isWin() {
         int[][] table = this.convert();
         boolean result = false;
-<<<<<<< HEAD
-        int i = 0;
-        while (i < this.size) {
-            boolean horizontally = true;
-            boolean vertically = true;
-            for (int j = 0; j < this.size; j++) {
-                if ((horizontally &= table[i][j] == 1) ||
-                        (vertically &= table[j][i] == 1)) {
+        int x = -1;
 
-                    result = true;
-                    break;
-
-                }
+        while (!result && ++x < this.size) {
+            boolean hResult = true;
+            boolean vResult = true;
+            for (int y = 0; y < this.size; y++) {
+                hResult &= (table[x][y] == 1);
+                vResult &= (table[y][x] == 1);
             }
-
-        }
-        return  result;
-    }
-
-
-
-
-
-
-=======
-        int i = -1;
-        while (!result && ++i < this.size) {
-            boolean horis = true;
-            boolean vert = true;
-            for (int j = 0; j < this.size; j++) {
-                horis &= (table[i][j] == 1);
-                vert &= (table[j][i] == 1);
-            }
-            result = horis || vert;
+            result = hResult || vResult;
         }
         return result;
     }
 
->>>>>>> da4f4be5df2531c16382613648e0c133024e5e59
     public int[][] convert() {
         int[][] table = new int[this.size][this.size];
         for (int row = 0; row != table.length; row++) {
