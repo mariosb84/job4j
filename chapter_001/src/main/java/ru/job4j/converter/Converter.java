@@ -10,11 +10,11 @@ public class Converter {
      * @return Euro.
      */
     public int rubleToEuro(int value) {
-<<<<<<< HEAD
+
         return value / 70;
-=======
-        return  value / 70;
->>>>>>> da4f4be5df2531c16382613648e0c133024e5e59
+
+
+
     }
     /**
      * Convertiruem rubli v dollari.
@@ -22,11 +22,10 @@ public class Converter {
      * @return Dollari
      */
     public int rubleToDollar(int value) {
-<<<<<<< HEAD
+
         return value / 60;
-=======
-        return  value / 60;
->>>>>>> da4f4be5df2531c16382613648e0c133024e5e59
+
+
     }
     /**
      * Convertiruem evro v rubli.
@@ -34,11 +33,11 @@ public class Converter {
      * @return Rubli.
      */
     public int euroToRuble(int value) {
-<<<<<<< HEAD
-        return value * 70;
-=======
+
+
+
         return  value * 70;
->>>>>>> da4f4be5df2531c16382613648e0c133024e5e59
+
     }
     /**
      * Convertiruem dollari v rubli.
@@ -46,10 +45,9 @@ public class Converter {
      * @return Rubli
      */
     public int dollarToRuble(int value) {
-<<<<<<< HEAD
+
         return value * 60;
-=======
-        return  value * 60;
->>>>>>> da4f4be5df2531c16382613648e0c133024e5e59
+
+
     }
 }
