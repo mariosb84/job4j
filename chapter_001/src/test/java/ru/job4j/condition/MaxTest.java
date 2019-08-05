@@ -38,4 +38,22 @@ public class MaxTest {
         int result = max.max(5, 5);
         assertThat(result, is(5));
     }
+    /**
+     * Test third max.
+     */
+    @Test
+    public void whenMax3To4To5Then5() {
+        Max max = new Max();
+        int result = max.max(3, 4, 5);
+        assertThat(result, is(5));
+    }
+    /**
+     * Test four max.
+     */
+    @Test
+    public void whenMax4To5To6To7Then7() {
+        Max max = new Max();
+        int result = max.max(4, 5, 6, 7);
+        assertThat(result, is(7));
+    }
 }

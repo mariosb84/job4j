@@ -19,9 +19,9 @@ public class TriangleTest {
     @Test
     public void whenAreaSetThreePointsThenTriangleArea() {
         // Create a point object.
-        Point first1 = new Point(0,0);
-        Point second1 = new Point(0,2);
-        Point third1 = new Point(2,0);
+        Point first1 = new Point(0, 0);
+        Point second1 = new Point(0, 2);
+        Point third1 = new Point(2, 0);
         // Create a triangle object.
         Triangle triangle = new Triangle(first1, second1, third1);
         // Calculate the area.
