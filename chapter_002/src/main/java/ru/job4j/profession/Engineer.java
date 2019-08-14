@@ -1,14 +1,13 @@
 package ru.job4j.profession;
-
 public class Engineer extends Profession {
-    public String giveAssignment;
+    private String giveProject;
     public Engineer() {
     }
-    public Engineer(String name, String surname, String giveAssignment) {
-      this.giveAssignment = giveAssignment;
+    public void  setGiveProject(String giveProject1) {
+        this.giveProject = giveProject1;
     }
-    public void assignment(Worker worker) {
-        System.out.println("Assigment to : " + worker + " is : " + giveAssignment);
+    public String project(Customer customer) {
+        return customer + " give  project : " + giveProject;
     }
 
 }

@@ -1,10 +1,9 @@
 package ru.job4j.profession;
-
 public class Profession {
-    public String name;
-    public String surname;
-    public String education;
-    public String birthday;
+    private String name;
+    private String surname;
+    private String education;
+    private String birthday;
     public Profession() {
 
     }
@@ -32,6 +31,13 @@ public class Profession {
     public String getBirthday() {
         return this.birthday;
 
+    }
+    public String showInfo(String name1, String surname1, String education1, String birthday1) {
+        this.name = name1;
+        this.surname = surname1;
+        this.education = education1;
+        this.birthday = birthday1;
+        return "People: " + name + " " + surname + ", " + education + ", " + birthday;
     }
 
 }
