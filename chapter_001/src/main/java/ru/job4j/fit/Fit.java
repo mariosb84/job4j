@@ -1,4 +1,4 @@
-package ru.job4j.idealweight;
+package ru.job4j.fit;
 
 /**
  * Programma rascheta idealnogo vesa.
