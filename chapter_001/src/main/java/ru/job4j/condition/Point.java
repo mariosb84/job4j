@@ -58,4 +58,14 @@ public class Point {
     public void info3d() {
         System.out.println(String.format("Point[%s, %s, %s]", this.x, this.y, this.z));
     }
+    public static void main(String[] args) {
+        Point a = new Point(0, 0);
+        Point b = new Point(0, 2);
+        Point c = new Point(0, 1, 3);
+        Point d = new Point(0, 2, 4);
+        double dist = a.distance(b);
+        double distTwo = c.distance3d(d);
+        System.out.println(dist);
+        System.out.println(distTwo);
+    }
 }
