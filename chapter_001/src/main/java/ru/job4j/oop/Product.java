@@ -1,6 +1,6 @@
 package ru.job4j.oop;
 
-public  class Product {
+public final class Product {
     private String name;
     private int price;
 
