@@ -26,7 +26,7 @@ bookFive[3] = bookOne;
         System.out.println();
         System.out.println("Print name : \" Clean code \"");
         for (int i = 0; i < bookFive.length; i++) {
-            if (bookFive[i].equals(bookOne)) {
+            if (bookFive[i].equals("Clean code")) {
                 System.out.println("Book name is : " + bookFive[i].getName() + ", "
                         + "Page number is : " + bookFive[i].getPageCount());
             }
