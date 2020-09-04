@@ -1,10 +1,6 @@
 package ru.job4j.ex;
 
 public class Fact {
-    public static void main(String[] args) {
-
-    }
-
     public int calc(int n) {
         int rsl = 1;
         if (n < 0) {
@@ -14,5 +10,10 @@ public class Fact {
             rsl *= index;
         }
         return rsl;
+    }
+    public static void main(String[] args) {
+        Fact fact =  new Fact();
+        fact.calc(-1);
+
     }
 }
