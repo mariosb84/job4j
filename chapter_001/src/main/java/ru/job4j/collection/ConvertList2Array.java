@@ -6,20 +6,21 @@ public class ConvertList2Array {
     public static int[][] toArray(List<Integer> list, int cells) {
         int groups = (int) Math.ceil((double) list.size() / cells);
         int[][] array = new int[groups][cells];
-        int row, cell, index = 0;
-        for (row = 0; row < array.length; row++) {
-            for (cell = 0; cell < cells; cell++) {
-                if (index < list.size()) {
-                    array[row][cell] = list.get(index);
-                } else {
-                    array[row][cell] = 0;
+        int row = 0, cell = 0;
+        for (Integer num : list) {
+                array[row][cell] = num;
+                if ((row < groups - 1) && cell == cells - 1) {
+                    row++;
                 }
-                index++;
+            if (cell < cells - 1) {
+                cell++;
+            } else {
+                cell = 0;
             }
-
         }
         return array;
     }
+
 
     public static void main(String[] args) {
         List<Integer> list = List.of(1, 2, 3, 4, 5, 6, 7);
@@ -30,5 +31,6 @@ public class ConvertList2Array {
             }
             System.out.println();
         }
+        System.out.println(rsl.length);
     }
 }
