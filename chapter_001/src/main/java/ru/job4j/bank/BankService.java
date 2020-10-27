@@ -19,6 +19,12 @@ public class BankService {
     }
 
     public User findByPassport(String passport) {
+        for (Map.Entry<User, List<Account>> entry : users.entrySet()) {
+             User key = entry.getKey();
+             if (key.getPassport().equals(passport)) {
+                 return key;
+             }
+        }
         return null;
     }
 
