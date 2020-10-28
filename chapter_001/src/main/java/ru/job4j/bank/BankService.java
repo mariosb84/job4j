@@ -10,12 +10,17 @@ public class BankService {
 
     public void addUser(User user) {
         if (!users.containsKey(user)) {
-            users.put(user, new ArrayList<>());
+            users.put(user, new ArrayList<Account>());
         }
     }
 
     public void addAccount(String passport, Account account) {
-
+        User user = findByPassport(passport);
+        ArrayList<Account> userAccount = new ArrayList<Account>();
+        if (user != null && !users.get(user).contains(account)) {
+            userAccount.add(account);
+            users.put(user, userAccount);
+        }
     }
 
     public User findByPassport(String passport) {
@@ -29,6 +34,11 @@ public class BankService {
     }
 
     public Account findByRequisite(String passport, String requisite) {
+        User user = findByPassport(passport);
+       users.get(user);
+        if (user != null && users.get(user).contains(Account.)) {
+
+        }
         return null;
     }
 
