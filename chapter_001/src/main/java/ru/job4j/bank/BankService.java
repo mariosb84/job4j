@@ -16,8 +16,8 @@ public class BankService {
 
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
-        ArrayList<Account> userAccount = new ArrayList<Account>();
-        if (user != null && !users.get(user).contains(account)) {
+        List<Account> userAccount = users.get(user);
+        if (user != null && !userAccount.contains(account)) {
             userAccount.add(account);
             users.put(user, userAccount);
         }
@@ -59,16 +59,4 @@ public class BankService {
         return rsl;
     }
 
-    public static void main(String[] args) {
-        User user = new User("3434", "Petr Arsentev");
-        BankService bank = new BankService();
-        bank.addUser(user);
-        bank.addAccount(user.getPassport(), new Account("5546", 150D));
-        bank.addAccount(user.getPassport(), new Account("113", 50D));
-        System.out.println(bank.findByRequisite(user.getPassport(), "5546"));
-        System.out.println(bank.findByRequisite(user.getPassport(), "113"));
-       // System.out.println(out.getBalance());
-       // System.out.println(in.getBalance());
-       // System.out.println(bank.transferMoney(user.getPassport(), "5546", user.getPassport(), "113", 150D));
-    }
 }
