@@ -49,6 +49,26 @@ public class BankService {
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
         boolean rsl = false;
+        Account out = findByRequisite(srcPassport, srcRequisite);
+        Account in = findByRequisite(destPassport, destRequisite);
+        if (out != null && in != null && out.getBalance() >= amount) {
+           in.setBalance(in.getBalance() + amount);
+           out.setBalance(out.getBalance() - amount);
+           rsl = true;
+        }
         return rsl;
+    }
+
+    public static void main(String[] args) {
+        User user = new User("3434", "Petr Arsentev");
+        BankService bank = new BankService();
+        bank.addUser(user);
+        bank.addAccount(user.getPassport(), new Account("5546", 150D));
+        bank.addAccount(user.getPassport(), new Account("113", 50D));
+        System.out.println(bank.findByRequisite(user.getPassport(), "5546"));
+        System.out.println(bank.findByRequisite(user.getPassport(), "113"));
+       // System.out.println(out.getBalance());
+       // System.out.println(in.getBalance());
+       // System.out.println(bank.transferMoney(user.getPassport(), "5546", user.getPassport(), "113", 150D));
     }
 }
