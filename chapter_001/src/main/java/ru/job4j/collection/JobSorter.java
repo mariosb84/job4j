@@ -25,8 +25,8 @@ public class JobSorter {
         Collections.sort(jobs, new JobDescByPriorityUp().thenComparing(new JobDescByNameUp()));
         Comparator<Job> cmpNamePriority2 = new JobDescByPriorityUp().thenComparing(new JobDescByNameUp());
         int rsl = cmpNamePriority2.compare(
-                new Job("f", 2),
-                new Job("a", 2)
+                new Job("f", 3),
+                new Job("d", 3)
         );
         System.out.println(jobs);
         System.out.println(rsl);
