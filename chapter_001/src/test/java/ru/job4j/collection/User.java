@@ -32,9 +32,9 @@ public class User implements Comparable<User> {
     @Override
     public int compareTo(User o) {
         Set<User> users = new TreeSet<>();
-        if (this.name.equals(o.getName())) {
+        /*if (this.name.equals(o.getName())) {
            // users.g
-        }
+        }*/
         return 0;
     }
 
