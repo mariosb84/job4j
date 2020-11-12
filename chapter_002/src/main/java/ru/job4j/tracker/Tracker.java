@@ -67,9 +67,9 @@ public class Tracker {
         }
         return result;
     }
-    public Item [] getAll () {
-        Item [] result = new Item [this.position];
-        for (int index = 0; index != this.position;index++) {
+    public Item[] getAll() {
+        Item[] result = new Item[this.position];
+        for (int index = 0; index != this.position; index++) {
             result[index] = this.items[index];
         }
         return  result;
