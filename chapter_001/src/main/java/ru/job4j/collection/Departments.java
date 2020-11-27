@@ -23,7 +23,19 @@ public class Departments {
     }
 
     public static void sortDesc(List<String> orgs) {
-        orgs.sort(new DepDescComp().reversed().thenComparing(new DepDescComp()));
+        /*for (int i = 0; i < orgs.size(); i++) {
+            String[] tmp = orgs.get(i).split("/");
+            String[] tmp2 = orgs.get(i + 1).split("/");
+            int rsl = tmp2[i].compareTo(tmp[i]);
+            if (rsl == 0) {
+                continue;
+
+            } else {
+                orgs.sort(new DepDescComp().reversed());
+            }
+        }*/
+       fillGaps(orgs);
+
 }
 
     public static void main(String[] args) {
@@ -42,6 +54,12 @@ public class Departments {
         System.out.println("Обратная сортировка : ");
         sortDesc(list2);
         System.out.println(list2);
+        List<String> listTest = new ArrayList<>(Arrays.asList("K2/SK1/SSK1"));
+        System.out.println("Test:");
+        String[] tmp = listTest.get(0).split("/");
+        System.out.println(tmp[0]);
+        System.out.println(tmp[1]);
+        System.out.println(tmp[2]);
 
     }
 }
