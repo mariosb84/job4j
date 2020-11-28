@@ -23,19 +23,7 @@ public class Departments {
     }
 
     public static void sortDesc(List<String> orgs) {
-        /*for (int i = 0; i < orgs.size(); i++) {
-            String[] tmp = orgs.get(i).split("/");
-            String[] tmp2 = orgs.get(i + 1).split("/");
-            int rsl = tmp2[i].compareTo(tmp[i]);
-            if (rsl == 0) {
-                continue;
-
-            } else {
-                orgs.sort(new DepDescComp().reversed());
-            }
-        }*/
-       fillGaps(orgs);
-
+        orgs.sort(new DepDescComp());
 }
 
     public static void main(String[] args) {
