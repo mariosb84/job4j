@@ -33,7 +33,8 @@ return result;
         Predicate<Person> surName = Person  -> Person.getSurname().contains(key);
         Predicate<Person> address = Person  -> Person.getAddress().contains(key);
         Predicate<Person> phone = Person  -> Person.getPhone().contains(key);
-        Predicate<Person> combine = Person  -> name.test(Person) || surName.test(Person) || address.test(Person) || phone.test(Person);
+        //Predicate<Person> combine = Person  -> name.test(Person) || surName.test(Person) || address.test(Person) || phone.test(Person);
+        Predicate<Person> combine = name.or(surName).or(address).or(phone);
         ArrayList<Person> result = new ArrayList<>();
         for (Person person : persons) {
             if (combine.test(person)) {
