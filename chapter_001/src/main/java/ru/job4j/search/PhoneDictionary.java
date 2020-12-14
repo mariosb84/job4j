@@ -29,8 +29,11 @@ public class PhoneDictionary {
 return result;
     }
     public ArrayList<Person> findSecond(String key) {
-        Predicate<Person> combine = Person  -> Person.getName().contains(key) || Person.getSurname().contains(key)
-                || Person.getAddress().contains(key) || Person.getPhone().contains(key);
+        Predicate<Person> name = Person  -> Person.getName().contains(key);
+        Predicate<Person> surName = Person  -> Person.getSurname().contains(key);
+        Predicate<Person> address = Person  -> Person.getAddress().contains(key);
+        Predicate<Person> phone = Person  -> Person.getPhone().contains(key);
+        Predicate<Person> combine = Person  -> name.test(Person) || surName.test(Person) || address.test(Person) || phone.test(Person);
         ArrayList<Person> result = new ArrayList<>();
         for (Person person : persons) {
             if (combine.test(person)) {
