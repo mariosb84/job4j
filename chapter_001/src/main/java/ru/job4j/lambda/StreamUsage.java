@@ -33,7 +33,7 @@ public class StreamUsage {
         ).collect(Collectors.toList());
         bugs.forEach(System.out::println);
         System.out.println();
-        System.out.println("Задание - Отфильтровать положительные числа :");
+        System.out.println("Задание -  Отфильтровать положительные числа :");
         List<Integer> numbers = List.of(
                 -1, -456, 600, 458, -1234, 151, 155, 160, 200, -500, -800, 345, -4546, 90, 120
         );
