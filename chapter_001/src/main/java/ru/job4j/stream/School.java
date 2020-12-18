@@ -15,11 +15,9 @@ public class School {
         }
         return result;
     }*/
-        List<Student> result = students.stream().filter(
+        return  students.stream().filter(
                 predict
         ).collect(Collectors.toList());
-       // result.forEach(System.out::println);
-       //return result;
-
+    }
 }
 
