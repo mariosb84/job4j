@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public  class Profiles {
-    List<Address> collect(List<Profile> profiles) {
+   public List<Address> collect(List<Profile> profiles) {
         return profiles.stream()
                 .map(Profile::getAddress)
-        .collect(Collectors.toList());
+                .collect(Collectors.toList());
     }
 
     public static void main(String[] args) {
@@ -17,6 +17,9 @@ public  class Profiles {
                 new Profile(new Address("Omsk", "Leninskiy prospekt", 98, 50))
         );
         Profiles profiles1 = new Profiles();
-        System.out.println(profiles1.collect(profiles));
+        System.out.println(profiles1.collect(profiles).get(0).getStreet());
+        System.out.println(profiles1.collect(profiles).get(1).getStreet());
+        System.out.println(profiles1.collect(profiles).get(2).getStreet());
     }
 }
+
