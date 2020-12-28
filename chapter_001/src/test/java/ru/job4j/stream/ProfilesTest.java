@@ -28,7 +28,7 @@ public class ProfilesTest {
         expected.add(new Address("Moscow", "Leninskiy prospekt", 10, 135));
         expected.add(new Address("Saint - Petersburg", "Nevskiy prospekt", 1, 14));
         expected.add(new Address("Omsk", "Leninskiy prospekt", 98, 50));
-        assertThat(profilesTest.collect(profiles).get(1).getStreet(), is(expected.get(1).getStreet()));
+        assertThat(profilesTest.collect(profiles).get(1).getStreet(), is(expected.get(2).getStreet()));
     }
     @Test
     public void whenGetHomeNumbAddress() {
@@ -37,7 +37,7 @@ public class ProfilesTest {
         expected.add(new Address("Moscow", "Leninskiy prospekt", 10, 135));
         expected.add(new Address("Saint - Petersburg", "Nevskiy prospekt", 1, 14));
         expected.add(new Address("Omsk", "Leninskiy prospekt", 98, 50));
-        assertThat(profilesTest.collect(profiles).get(2).getHome(), is(expected.get(2).getHome()));
+        assertThat(profilesTest.collect(profiles).get(2).getHome(), is(expected.get(1).getHome()));
     }
     @Test
     public void whenGetApartmentNumbAddress() {
@@ -47,5 +47,16 @@ public class ProfilesTest {
         expected.add(new Address("Saint - Petersburg", "Nevskiy prospekt", 1, 14));
         expected.add(new Address("Omsk", "Leninskiy prospekt", 98, 50));
         assertThat(profilesTest.collect(profiles).get(0).getApartment(), is(expected.get(0).getApartment()));
+    }
+    @Test
+    public void whenSortByCityAndDeleteDuplicate() {
+        Profiles profilesTest = new Profiles();
+        List<Address> expected = new ArrayList<>();
+        expected.add(new Address("Moscow", "Leninskiy prospekt", 10, 135));
+        expected.add(new Address("Moscow", "Leninskiy prospekt", 10, 135));
+        expected.add(new Address("Moscow", "Leninskiy prospekt", 10, 135));
+        expected.add(new Address("Saint - Petersburg", "Nevskiy prospekt", 1, 14));
+        expected.add(new Address("Omsk", "Leninskiy prospekt", 98, 50));
+        assertThat(profilesTest.collect(profiles).get(1).getCity(), is(expected.get(4).getCity()));
     }
 }
