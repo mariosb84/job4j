@@ -9,10 +9,14 @@ public class SchoolMap {
     public Map<String, Student> collectMap(List<Student> students) {
         return  students
                 .stream()
-                .distinct()
+               // .distinct()
                 .collect(Collectors.toMap(
                         Student::getSurname,
-                        student ->  students.get(students.indexOf(student))
+                        s ->  s,                                                   //student ->  student
+                        (s1, s2) -> {
+                            System.out.println("duplicate key found!");
+                            return s1;
+                        }
                         )
                 );
 
@@ -22,6 +26,9 @@ public class SchoolMap {
 
     public static void main(String[] args) {
         List<Student> students = new ArrayList<>();
+        students.add(new Student(10, "Surname1"));
+        students.add(new Student(20, "Surname2"));
+        students.add(new Student(30, "Surname3"));
         students.add(new Student(10, "Surname1"));
         students.add(new Student(20, "Surname2"));
         students.add(new Student(30, "Surname3"));
