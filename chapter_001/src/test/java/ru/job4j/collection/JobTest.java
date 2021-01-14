@@ -19,7 +19,8 @@ public class JobTest {
                 new Job("f", 2)
 
         );
-        List<Job> expect = Arrays.asList(
+       // List<Job> expect = Arrays.asList(                                // меняем на  list.of
+        List<Job> expect = List.of(
                 new Job("f", 1),
                 new Job("e", 4),
                 new Job("d", 2)
@@ -37,7 +38,8 @@ public class JobTest {
                 new Job("f", 2)
 
         );
-        List<Job> expect = Arrays.asList(
+        //List<Job> expect = Arrays.asList(                              // меняем на  list.of
+                List<Job> expect = List.of(
                 new Job("e", 4),
                 new Job("f", 2),
                 new Job("d", 1)
@@ -55,7 +57,8 @@ public class JobTest {
                 new Job("f", 2)
 
         );
-        List<Job> expect = Arrays.asList(
+        //List<Job> expect = Arrays.asList(                                    // меняем на  list.of
+                List<Job> expect = List.of(
                 new Job("d", 1),
                 new Job("e", 4),
                 new Job("f", 2)
@@ -73,7 +76,8 @@ public class JobTest {
                 new Job("f", 2)
 
         );
-        List<Job> expect = Arrays.asList(
+        //List<Job> expect = Arrays.asList(                                     // меняем на  list.of
+        List<Job> expect = List.of(
                 new Job("d", 1),
                 new Job("f", 2),
                 new Job("e", 4)

@@ -15,7 +15,8 @@ public class ItemSorterTest {
                 new Item(2, "e"),
                 new Item(1, "d")
         );
-        List<Item> expect = Arrays.asList(
+        //List<Item> expect = Arrays.asList(                         // меняем на  list.of
+        List<Item> expect = List.of(
                 new Item(1, "d"),
                 new Item(2, "e"),
                 new Item(3, "f")
@@ -32,7 +33,8 @@ public class ItemSorterTest {
                 new Item(2, "e"),
                 new Item(3, "f")
         );
-        List<Item> expect = Arrays.asList(
+        //List<Item> expect = Arrays.asList(                          // меняем на  list.of
+        List<Item> expect = List.of(
                 new Item(3, "f"),
                 new Item(2, "e"),
                 new Item(1, "d")
@@ -49,7 +51,8 @@ public class ItemSorterTest {
                 new Item(2, "e"),
                 new Item(1, "d")
         );
-        List<Item> expect = Arrays.asList(
+       // List<Item> expect = Arrays.asList(                            // меняем на  list.of
+        List<Item> expect = List.of(
                 new Item(1, "d"),
                 new Item(2, "e"),
                 new Item(3, "f")
@@ -66,7 +69,8 @@ public class ItemSorterTest {
                 new Item(2, "e"),
                 new Item(3, "f")
         );
-        List<Item> expect = Arrays.asList(
+        //List<Item> expect = Arrays.asList(                                // меняем на  list.of
+        List<Item> expect = List.of(
                 new Item(3, "f"),
                 new Item(2, "e"),
                 new Item(1, "d")
