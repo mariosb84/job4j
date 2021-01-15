@@ -1,9 +1,6 @@
 package ru.job4j.bank;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class BankService {
     private Map<User, List<Account>> users = new HashMap<>();
@@ -13,28 +10,37 @@ public class BankService {
     }
 
     public void addAccount(String passport, Account account) {
-        User user = findByPassport(passport);
-        if (user != null) {
+       // User user = findByPassport(passport);                           // Переделываем на Optional
+        Optional<User> user = findByPassport(passport);
+       // if (user != null) {                                              // Переделываем на Optional
+        if (user.isPresent()) {
             List<Account> userAccount = users.get(user);
             if (!userAccount.contains(account)) {
                 userAccount.add(account);
+               // users.put(user, userAccount);
                 users.put(user, userAccount);
             }
         }
     }
 
-    public User findByPassport(String passport) {
-        /*for (User user : users.keySet()) {
+    //public User findByPassport(String passport) {                        // Переделываем на Optional
+    public Optional<User> findByPassport(String passport) {
+        Optional<User> rsl = Optional.empty();                            // Переделываем на Optional
+        for (User user : users.keySet()) {
              if (user.getPassport().equals(passport)) {
-                 return user;
+                 rsl = Optional.of(user);
+                // return user;                                           // Переделываем на Optional
+                 break;                                                   // Переделываем на Optional
              }
         }
-        return null;*/                                                            // Переделываем на stream api :
-        return users.keySet()
+        //return null;                                                    // Переделываем на Optional
+        return rsl;                                                       // Переделываем на Optional
+
+       /* return users.keySet()                                                 // Переделываем на stream api :
                 .stream()
                 .filter(s -> s.getPassport().equals(passport))
                 .findFirst()
-                .orElse(null);
+                .orElse(null);*/
     }
 
     public Account findByRequisite(String passport, String requisite) {
