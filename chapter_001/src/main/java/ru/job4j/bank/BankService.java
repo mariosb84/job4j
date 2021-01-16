@@ -25,7 +25,7 @@ public class BankService {
     }
 
     //public User findByPassport(String passport) {                       // Переделываем на Optional
-    public Optional<User> findByPassport(String passport) {
+    /*public Optional<User> findByPassport(String passport) {
         Optional<User> rsl = Optional.empty();                            // Переделываем на Optional
         for (User user : users.keySet()) {
              if (user.getPassport().equals(passport)) {
@@ -35,20 +35,26 @@ public class BankService {
              }
         }
         //return null;                                                    // Переделываем на Optional
-        return rsl;                                                       // Переделываем на Optional
+        return rsl;   */                                                    // Переделываем на Optional
 
 
 
-
-       /* return users.keySet()                                                 // Переделываем на stream api :
+    /*public User findByPassport(String passport) {                            // Переделываем на stream api :
+        return users.keySet()
                 .stream()
                 .filter(s -> s.getPassport().equals(passport))
                 .findFirst()
-                .orElse(null);*/
+                .orElse(null);
+    }*/
+    public Optional<User> findByPassport(String passport) {                // Переделываем  stream api на Optional :
+        return users.keySet()
+                .stream()
+                .filter(s -> s.getPassport().equals(passport))
+                .findFirst();
     }
 
     //public Account findByRequisite(String passport, String requisite) {            // Переделываем на Optional
-    public Optional<Account> findByRequisite(String passport, String requisite) {    // Переделываем на Optional
+   /* public Optional<Account> findByRequisite(String passport, String requisite) {    // Переделываем на Optional
             //User user = findByPassport(passport);                                  // Переделываем на Optional
         Optional<User> user = findByPassport(passport);                              // Переделываем на Optional
         Optional<Account> rsl = Optional.empty();                                    // Переделываем на Optional
@@ -65,7 +71,7 @@ public class BankService {
             }
         }
         //return null;                                                               // Переделываем на Optional
-        return rsl;                                                                  // Переделываем на Optional
+        return rsl;   */                                                               // Переделываем на Optional
 
 
        /* User user = findByPassport(passport);                                   // Переделываем на stream api :
@@ -77,7 +83,16 @@ public class BankService {
                     .orElse(null);
         }
         return null;*/
-    }
+
+        public Optional<Account> findByRequisite(String passport, String requisite) {              // Переделываем  stream api на Optional :
+            Optional<User> user = findByPassport(passport);
+            Optional<Account> rsl = Optional.empty();
+            return user.map(value -> users.get(value)
+                    .stream()
+                    .filter(s -> s.getRequisite().equals(requisite))
+                    .findFirst())
+                    .orElse(rsl);
+        }
 
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
