@@ -41,7 +41,7 @@ public class Analyze {
 
     }
 
-    public static Tuple bestStudent(Stream<Pupil> stream) {                                            // без double!!!
+    public static Tuple bestStudent(Stream<Pupil> stream) {                                            // не работает!!!
         return  stream
                 .map(p -> new Tuple(p.getName(), p.getSubjects().parallelStream()
                         .flatMap(s -> Stream.of(p.getSubjects()))
@@ -49,7 +49,7 @@ public class Analyze {
                         .mapToInt(Subject::getScore)
                         .sum()))
                 .max(Comparator.comparing(Tuple::getScore))
-        .orElse(null);
+                .orElse(null);
     }
 
     public static Tuple bestSubject(Stream<Pupil> stream) {                                           // работает
@@ -65,5 +65,21 @@ public class Analyze {
                 .orElse(null);
     }
 
-
+    public static void main(String[] args) {
+        List list = List.of(
+                new Pupil("Ivanov", List.of(new Subject("Math", 100), new Subject("Lang", 100))),
+                new Pupil("Petrov", List.of(new Subject("Math", 60), new Subject("Lang", 60)))
+        );
+        Tuple tuple = bestStudent(list.stream());
+        System.out.println(tuple.getName());
+        System.out.println(tuple.getScore());
+        System.out.println();
+        List list1 = List.of(
+                new Pupil("Ivanov", List.of(new Subject("Math", 100), new Subject("Lang", 40))),
+                new Pupil("Petrov", List.of(new Subject("Math", 60), new Subject("Lang", 60)))
+        );
+        Tuple tuple1 = bestSubject(list1.stream());
+        System.out.println(tuple1.getName());
+        System.out.println(tuple1.getScore());
+    }
 }
