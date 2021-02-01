@@ -1,6 +1,7 @@
 package ru.job4j.stream;
 
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -8,23 +9,26 @@ import java.util.stream.Stream;
 public class Analyze {
 
     public static double averageScore(Stream<Pupil> stream) {                                     // работает
-        return  stream
+        return stream
                 .flatMap(s -> Stream.of(s.getSubjects()))
                 .flatMap(List::stream)
-                        .mapToInt(Subject::getScore)
-                        .average()
-                        .orElse(0D);
+                .mapToInt(Subject::getScore)
+                .average()
+                .orElse(0D);
     }
 
-    public static List<Tuple> averageScoreBySubject(Stream<Pupil> stream) {                         // не работает !!!
+    public static List<Tuple> averageScoreBySubject(Stream<Pupil> stream) {                         //  работает
         return  stream
-                .flatMap(s -> Stream.of(s.getSubjects()))
-                .flatMap(List::stream)
-                .map(s -> new Tuple(s.getName(), s.getScore()))
+                .map(p -> new Tuple(p.getName(), p.getSubjects().parallelStream()
+                        .flatMap(s -> Stream.of(p.getSubjects()))
+                        .flatMap(List::stream)
+                        .mapToInt(Subject::getScore)
+                        .average()
+                        .orElse(0D)))
                 .collect(Collectors.toList());
     }
 
-    public static List<Tuple> averageScoreByPupil(Stream<Pupil> stream) {                           // не работает !!!
+    public static List<Tuple> averageScoreByPupil(Stream<Pupil> stream) {                           // не в ту сторону !!!
         return  stream
                 .flatMap(s -> Stream.of(s.getSubjects()))
                 .flatMap(List::stream)
@@ -37,19 +41,29 @@ public class Analyze {
 
     }
 
-    public static Tuple bestStudent(Stream<Pupil> stream) {
-        return null;
+    public static Tuple bestStudent(Stream<Pupil> stream) {                                            // без double!!!
+        return  stream
+                .map(p -> new Tuple(p.getName(), p.getSubjects().parallelStream()
+                        .flatMap(s -> Stream.of(p.getSubjects()))
+                        .flatMap(List::stream)
+                        .mapToInt(Subject::getScore)
+                        .sum()))
+                .max(Comparator.comparing(Tuple::getScore))
+        .orElse(null);
     }
 
-    public static Tuple bestSubject(Stream<Pupil> stream) {
-        return null;
+    public static Tuple bestSubject(Stream<Pupil> stream) {                                           // работает
+        return  stream
+                .flatMap(s -> Stream.of(s.getSubjects()))
+                .flatMap(List::stream)
+                .collect(Collectors.groupingBy(Subject::getName,
+                        Collectors.summingDouble(Subject::getScore)))
+                .entrySet()
+                .stream()
+                .map(p -> new Tuple(p.getKey(), p.getValue()))
+                .max(Comparator.comparing(Tuple::getScore))
+                .orElse(null);
     }
 
 
-    public static void main(String[] args) {
-        var x = 0;
-        var y = 5;
-        var z = 7;
-        int f = 0;
-    }
 }
