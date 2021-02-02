@@ -68,6 +68,7 @@ public class AnalyzeTest {
                 ).stream()
         );
         assertThat(best, is(new Tuple("Ivanov", 200D)));
+        //assertThat(best, is(new Tuple("Petrov", 60D)));
     }
 
     @Test

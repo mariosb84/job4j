@@ -83,4 +83,8 @@ public class Analyze {
         System.out.println(tuple1.getName());
         System.out.println(tuple1.getScore());
     }
+
 }
+
+
+
