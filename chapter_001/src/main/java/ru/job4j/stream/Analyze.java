@@ -3,6 +3,7 @@ package ru.job4j.stream;
 
 
 import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -20,20 +21,19 @@ public class Analyze {
 
     public static List<Tuple> averageScoreBySubject(Stream<Pupil> stream) {                         //  работает
         return  stream
-                .map(p -> new Tuple(p.getName(), p.getSubjects().parallelStream()
-                        .flatMap(s -> Stream.of(p.getSubjects()))
-                        .flatMap(List::stream)
+                .map(p -> new Tuple(p.getName(), p.getSubjects()
+                        .stream()
                         .mapToInt(Subject::getScore)
                         .average()
                         .orElse(0D)))
                 .collect(Collectors.toList());
     }
 
-    public static List<Tuple> averageScoreByPupil(Stream<Pupil> stream) {                           // не в ту сторону !!!
+    public static List<Tuple> averageScoreByPupil(Stream<Pupil> stream) {                           // работает
         return  stream
                 .flatMap(s -> Stream.of(s.getSubjects()))
                 .flatMap(List::stream)
-                .collect(Collectors.groupingBy(Subject::getName,
+                .collect(Collectors.groupingBy(Subject::getName, LinkedHashMap::new,
                         Collectors.averagingDouble(Subject::getScore)))
                 .entrySet()
                 .stream()
@@ -42,11 +42,10 @@ public class Analyze {
 
     }
 
-    public static Tuple bestStudent(Stream<Pupil> stream) {                                            // не работает!!!
+    public static Tuple bestStudent(Stream<Pupil> stream) {                                            //  работает
         return  stream
-                .map(p -> new Tuple(p.getName(), p.getSubjects().parallelStream()
-                        .flatMap(s -> Stream.of(p.getSubjects()))
-                        .flatMap(List::stream)
+                .map(p -> new Tuple(p.getName(), p.getSubjects()
+                        .stream()
                         .mapToDouble(Subject::getScore)
                         .sum()))
                 .max(Comparator.comparing(Tuple::getScore))
@@ -57,7 +56,7 @@ public class Analyze {
         return  stream
                 .flatMap(s -> Stream.of(s.getSubjects()))
                 .flatMap(List::stream)
-                .collect(Collectors.groupingBy(Subject::getName,
+                .collect(Collectors.groupingBy(Subject::getName, LinkedHashMap::new,
                         Collectors.summingDouble(Subject::getScore)))
                 .entrySet()
                 .stream()
