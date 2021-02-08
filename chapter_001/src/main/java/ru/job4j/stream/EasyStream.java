@@ -1,73 +1,78 @@
 package ru.job4j.stream;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class EasyStream {
 
-    private List<Integer>  source;
-    private Function<Integer, Integer> fun;
-    private Predicate<Integer> fun2;
+    private List<Integer> of;
+    private Function<Integer, Integer> map;
+    private Predicate<Integer> filter;
 
-    public EasyStream(List<Integer> source, Function<Integer, Integer> fun, Predicate<Integer> fun2) {
-      this.source = source;
-      this.fun = fun;
-      this.fun2 = fun2;
+    public EasyStream(List<Integer> of, Function<Integer, Integer> map, Predicate<Integer> filter) {
+        this.of = of;
+        this.map = map;
+        this.filter = filter;
     }
 
     public static EasyStream of(List<Integer> source) {
-        throw new UnsupportedOperationException();
+
+        return new Builder().build();
+        //throw new UnsupportedOperationException();
 
     }
 
     public EasyStream map(Function<Integer, Integer> fun) {
-        throw new UnsupportedOperationException();
+       // throw new UnsupportedOperationException();
+        this.map = fun;
+        return new EasyStream.Builder().build();
     }
 
     public EasyStream filter(Predicate<Integer> fun) {
-        throw new UnsupportedOperationException();
+        this.filter = fun;
+        //throw new UnsupportedOperationException();
+        return new EasyStream.Builder().build();
     }
 
     public List<Integer> collect() {
         throw new UnsupportedOperationException();
+
+
     }
 
     static class Builder {
 
-        private List<Integer>  source;
-        private Function<Integer, Integer> fun;
-        private Predicate<Integer> fun2;
+        private List<Integer> of;
+        private Function<Integer, Integer> map;
+        private Predicate<Integer> filter;
 
-        EasyStream.Builder buildSource(List<Integer>  source) {
-            this.source = source;
+        EasyStream.Builder buildOf(List<Integer> of) {
+            this.of = of;
             return this;
         }
-        EasyStream.Builder buildFun(Function<Integer, Integer> fun) {
-            this.fun = fun;
+        EasyStream.Builder buildMap(Function<Integer, Integer> map) {
+            this.map = map;
             return this;
         }
-        EasyStream.Builder buildFun2(Predicate<Integer> fun2) {
-            this.fun2 = fun2;
+        EasyStream.Builder buildFilter(Predicate<Integer> filter) {
+            this.filter = filter;
             return this;
         }
 
         EasyStream build() {
-            EasyStream easyStream = new EasyStream(source, fun, fun2);
-            easyStream.source = source;
-            easyStream.fun = fun;
-            easyStream.fun2 = fun2;
+            EasyStream easyStream = new EasyStream(of, map, filter);
+            easyStream.of = of;
+            easyStream.map = map;
+            easyStream.filter = filter;
             return easyStream;
         }
     }
     public static void main(String[] args) {
         EasyStream easyStream = new Builder()
-                .buildSource(List.of(1, 2, 3))
-                .buildFun(e -> e * 2)
-                .buildFun2(e -> e == 2)
+                .buildOf(List.of(1, 2, 3))
+                .buildMap(e -> e * 2)
+                .buildFilter(e -> e == 2)
                 .build();
         System.out.println(easyStream);
     }
