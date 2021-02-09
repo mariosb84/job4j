@@ -1,5 +1,8 @@
 package ru.job4j.stream;
 
+import ru.job4j.lambda.Attachment;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -18,18 +21,29 @@ public class EasyStream {
     }
 
     public EasyStream map(Function<Integer, Integer> fun) {
-       // throw new UnsupportedOperationException();
-        return new EasyStream(of);
+        List<Integer> rsl = new ArrayList<>();
+        for (Integer i : of) {
+            i = fun.apply(i);
+            rsl.add(i);
+        }
+        return new EasyStream(rsl);
+        // throw new UnsupportedOperationException();
     }
 
     public EasyStream filter(Predicate<Integer> fun) {
-        //throw new UnsupportedOperationException();
-        return new EasyStream(of);
+        List<Integer> rsl = new ArrayList<>();
+        for (Integer i : of) {
+             if (fun.test(i)) {
+                 rsl.add(i);
+             }
+        }
+        return new EasyStream(rsl);
+        // throw new UnsupportedOperationException();
     }
 
     public List<Integer> collect() {
-        //throw new UnsupportedOperationException();
         return of;
+        // throw new UnsupportedOperationException();
 
 
     }
