@@ -7,41 +7,34 @@ import java.util.function.Predicate;
 public class EasyStream {
 
     private List<Integer> of;
-    private Function<Integer, Integer> map;
-    private Predicate<Integer> filter;
 
-    public EasyStream(List<Integer> of, Function<Integer, Integer> map, Predicate<Integer> filter) {
+    private EasyStream(List<Integer> of) {
         this.of = of;
-        this.map = map;
-        this.filter = filter;
     }
 
     public static EasyStream of(List<Integer> source) {
-
-        return new Builder().build();
+        return new EasyStream(source);
         //throw new UnsupportedOperationException();
-
     }
 
     public EasyStream map(Function<Integer, Integer> fun) {
        // throw new UnsupportedOperationException();
-        this.map = fun;
-        return new EasyStream.Builder().build();
+        return new EasyStream(of);
     }
 
     public EasyStream filter(Predicate<Integer> fun) {
-        this.filter = fun;
         //throw new UnsupportedOperationException();
-        return new EasyStream.Builder().build();
+        return new EasyStream(of);
     }
 
     public List<Integer> collect() {
-        throw new UnsupportedOperationException();
+        //throw new UnsupportedOperationException();
+        return of;
 
 
     }
 
-    static class Builder {
+    /*static class Builder {
 
         private List<Integer> of;
         private Function<Integer, Integer> map;
@@ -67,13 +60,13 @@ public class EasyStream {
             easyStream.filter = filter;
             return easyStream;
         }
-    }
-    public static void main(String[] args) {
+    }/*
+    /*public static void main(String[] args) {
         EasyStream easyStream = new Builder()
                 .buildOf(List.of(1, 2, 3))
                 .buildMap(e -> e * 2)
                 .buildFilter(e -> e == 2)
                 .build();
         System.out.println(easyStream);
-    }
+    }*/
 }
