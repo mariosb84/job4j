@@ -15,8 +15,7 @@ public class EasyStream {
 
     }
 
-    private EasyStream(List<Integer> of)
-    {
+    private EasyStream(List<Integer> of) {
         this.of = of;
     }
 

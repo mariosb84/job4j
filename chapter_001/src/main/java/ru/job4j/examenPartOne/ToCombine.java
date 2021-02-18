@@ -5,7 +5,8 @@ package ru.job4j.examenpartone;
 public class ToCombine {
     /**
      * Add two sorted arrays.
-     * @param  array1 , array2.
+     * @param  left - array1.
+     * @param  right - array2.
      * @return sorted array3.
      */
     public static int[] merge(int[] left, int[] right) {

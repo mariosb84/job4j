@@ -15,11 +15,10 @@ public class EasyStreamBuilder {
 
     }
 
-    private EasyStreamBuilder(List<Integer> of/*, Function<Integer, Integer> map, Predicate<Integer> filter*/)
-    {
+    private EasyStreamBuilder(List<Integer> of/*, Function<Integer, Integer> map, Predicate<Integer> filter*/) {
         this.of = of;
-       // this.map = map;
-       // this.filter = filter;
+        // this.map = map;
+        // this.filter = filter;
     }
 
     public static EasyStreamBuilder ofBuild(List<Integer> source) {
