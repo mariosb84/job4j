@@ -84,6 +84,7 @@ public class BankService {
        * User type.
        * @param passport - a line with the name of the object's passport
        * type User
+       * @return object User type.
        */
     public Optional<User> findByPassport(String passport) {                // Переделываем  stream api на Optional :
         return users.keySet()
@@ -133,6 +134,7 @@ public class BankService {
        * type User
        * @param requisite - a string with the name of the object's requisites
        * type Account
+       * @return object Account type.
        */
         public Optional<Account> findByRequisite(String passport, String requisite) {              // Переделываем  stream api на Optional :
             Optional<User> user = findByPassport(passport);
@@ -145,13 +147,16 @@ public class BankService {
         }
 
     /**
+     * the method finds the accounts of the sender and the recipient,
+     * checks the balance of the sender, and, if there is enough money, transfers
+     * The method accepts as input a :
+     * @param srcPassport - string with the name of the sender's passport
+     * @param srcRequisite - string with the name of the sender's requisites
+     * @param destPassport - string with the name of the recipient's passport
+     * @param destRequisite - string with the name of the recipient's requisites
+     * @param amount - transfer amount
      *
-     * @param srcPassport
-     * @param srcRequisite
-     * @param destPassport
-     * @param destRequisite
-     * @param amount
-     * @return
+     * @return money transfer result - true/false
      */
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
